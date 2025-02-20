@@ -1,0 +1,8 @@
+*{
+    background-color: rgb(137, 163, 163);
+}
+input{
+    background-color: bisque;
+    color: black;
+    border-radius: 5px;
+}
