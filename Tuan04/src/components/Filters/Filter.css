@@ -1,0 +1,218 @@
+.img-menu {
+    margin-right: 5px;
+    height: 100%;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 150px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.brand-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff4d79;
+}
+
+.search-bar input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    width: 250px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+}
+
+.recipe-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.recipe-box button {
+    background-color: #ff4d79;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.profile-pic {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+}
+
+.subscribe {
+    display: flex;
+    margin-top: 10px;
+}
+
+.subscribe input {
+    padding: 8px;
+    border: none;
+    border-radius: 3px;
+    width: 70%;
+}
+
+.subscribe button {
+    background-color: #ff4d79;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    margin-left: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.content {
+    display: flex;
+    padding: 20px;
+    gap: 30px;
+}
+
+.filters {
+    width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #fff;
+    margin: 0px 20px 20px 20px;
+}
+
+.filters h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.filter-section {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #dee1e6;
+}
+
+.filter-section h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.filter-section label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.stars span {
+    color: #ffcc00;
+    font-size: 18px;
+}
+
+.apply-filters {
+    width: 85%;
+    align-items: center;
+    padding: 5px;
+    margin-bottom: 15px;
+    background-color: #f44b87;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.no-results {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.no-results img {
+    width: 230px;
+    margin-bottom: 20px;
+}
+
+.no-results h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.no-results .query {
+    color: #ff4d6d;
+    font-weight: bold;
+}
+
+.no-results p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.suggestions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.tag {
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    background-color: #f8f8f8;
+    color: #333;
+    font-weight: bold;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.tag:hover {
+    background-color: #ff4d6d;
+    color: white;
+}
+
+.filter-section .minutes {
+    width: 100%;
+}
+
+.type-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.type-grid label {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #333;
+}
+
+.type-grid input {
+    margin-right: 8px;
+    cursor: pointer;
+}
