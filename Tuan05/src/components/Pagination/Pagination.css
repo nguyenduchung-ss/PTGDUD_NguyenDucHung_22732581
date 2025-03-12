@@ -1,0 +1,15 @@
+.pagination .page-item .page-link {
+    border-radius: 8px;
+    margin: 0 5px;
+    color: #333;
+}
+.pagination .page-item.active .page-link {
+    background-color: #ff69b4;
+    border-color: #ff69b4;
+    color: white;
+}
+.pagination .page-item:first-child .page-link,
+.pagination .page-item:last-child .page-link {
+    border: none;
+    background-color: transparent;
+}

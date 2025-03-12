@@ -1,0 +1,21 @@
+.text-minutes {
+    background-color: rgb(254, 240, 245);
+    color: rgb(244, 75, 135);
+}
+
+.btn_favorites {
+    background-color: #ffffff;
+    border-color: #f44b87;
+    border-radius: 50%;
+    height: 100%;
+    width: 50px;
+}
+
+.text_favorites {
+    color: #f44b87;
+    margin-bottom: 3px;
+}
+
+.card-img-top {
+    height: 250px;
+}
