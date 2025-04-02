@@ -2,7 +2,9 @@ import React from 'react'
 
 export default function Table() {
   return (
-    <div className=' h-139   p-4 border-2 border-blue-400'>
+    <div>
+      
+      <div className=' h-139   p-4 border-2 border-blue-400'>
       <table className='w-full h-129 border border-gray-600 text-center '>
           <thead>
             <tr>
@@ -37,6 +39,7 @@ export default function Table() {
             </tr>
           </tbody>
       </table>
+    </div>
     </div>
   )
 }
