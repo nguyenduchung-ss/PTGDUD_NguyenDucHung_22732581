@@ -1,6 +1,12 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 export default function SideBar() {
+  const navClass = ({ isActive }) =>
+    isActive
+      ? 'flex items-center text-white bg-pink-500 px-3 py-2 rounded cursor-pointer'
+      : 'flex items-center text-gray-700 hover:bg-pink-100 px-3 py-2 rounded cursor-pointer'
+
   return (
     <div className='w-1/5 min-h-screen bg-white shadow-md flex flex-col justify-between'>
       <div>
@@ -9,34 +15,46 @@ export default function SideBar() {
 
         {/* Navigation */}
         <nav className='px-4'>
-          <ul className='space-y-6'>
-            <li className='flex items-center text-gray-700 cursor-pointer'>
-              <img src='/icons/Squares four 1.png' alt='dashboard' className='w-5 h-5 mr-3' />
-              Dashboard
+          <ul className='space-y-4'>
+            <li>
+              <NavLink to='/' className={navClass}>
+                <img src='/icons/Squares four 1.png' alt='dashboard' className='w-5 h-5 mr-3' />
+                Dashboard
+              </NavLink>
             </li>
-            <li className='flex items-center text-gray-700 cursor-pointer'>
-              <img src='/icons/Folder.png' alt='projects' className='w-5 h-5 mr-3' />
-              Projects
+            <li>
+              <NavLink to='/projects' className={navClass}>
+                <img src='/icons/Folder.png' alt='projects' className='w-5 h-5 mr-3' />
+                Projects
+              </NavLink>
             </li>
-            <li className='flex items-center text-gray-700 cursor-pointer'>
-              <img src='/icons/Groups.png' alt='teams' className='w-5 h-5 mr-3' />
-              Teams
+            <li>
+              <NavLink to='/teams' className={navClass}>
+                <img src='/icons/Groups.png' alt='teams' className='w-5 h-5 mr-3' />
+                Teams
+              </NavLink>
             </li>
-            <li className='flex items-center text-gray-700 cursor-pointer'>
-              <img src='/icons/Pie chart.png' alt='analytics' className='w-5 h-5 mr-3' />
-              Analytics
+            <li>
+              <NavLink to='/analytics' className={navClass}>
+                <img src='/icons/Pie chart.png' alt='analytics' className='w-5 h-5 mr-3' />
+                Analytics
+              </NavLink>
             </li>
-            <li className='flex items-center text-gray-700 cursor-pointer'>
-              <img src='/icons/Chat.png' alt='messages' className='w-5 h-5 mr-3' />
-              Messages
+            <li>
+              <NavLink to='/messages' className={navClass}>
+                <img src='/icons/Chat.png' alt='messages' className='w-5 h-5 mr-3' />
+                Messages
+              </NavLink>
             </li>
-            <li className='flex items-center text-gray-700 cursor-pointer'>
-              <img src='/icons/Code.png' alt='integrations' className='w-5 h-5 mr-3' />
-              Integrations
+            <li>
+              <NavLink to='/integrations' className={navClass}>
+                <img src='/icons/Code.png' alt='integrations' className='w-5 h-5 mr-3' />
+                Integrations
+              </NavLink>
             </li>
           </ul>
-          
-          <img src='/icons/Group.png' alt='integrations' className='p-5' />
+
+          <img src='/icons/Group.png' alt='decor' className='p-5' />
         </nav>
       </div>
 
