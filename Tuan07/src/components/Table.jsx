@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Table() {
   return (
-    <div className=' h-139   p-4 border-2 border-blue-400'>
+    <div className=' h-187.5   p-4 border-2 border-blue-400'>
       <table className='w-full h-129 border border-gray-600 text-center '>
           <thead>
             <tr>
