@@ -1,7 +1,7 @@
 
 import './App.css'
 import SideBar from './components/SideBar'
-import Header from './components/header'
+import Header from './components/Header'
 import Overview from './components/Overview'
 import Table from './components/Table'
 
