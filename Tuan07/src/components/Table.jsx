@@ -1,56 +1,121 @@
-import React from 'react';
-
-const statusColors = {
-  New: 'bg-blue-100 text-blue-600',
-  'In-progress': 'bg-yellow-100 text-yellow-600',
-  Completed: 'bg-green-100 text-green-600',
-};
-
-const rows = [
-  { name: 'Elizabeth Lee', company: 'AvatarSystems', value: '$359', date: '10/07/2023', status: 'New' },
-  { name: 'Carlos Garcia', company: 'SmoozeShift', value: '$747', date: '24/07/2023', status: 'New' },
-  { name: 'Elizabeth Bailey', company: 'Prime Time Telecom', value: '$564', date: '08/08/2023', status: 'In-progress' },
-  { name: 'Ryan Brown', company: 'OmniTech Corporation', value: '$541', date: '31/08/2023', status: 'In-progress' },
-  { name: 'Ryan Young', company: 'DataStream Inc.', value: '$769', date: '01/05/2023', status: 'Completed' },
-  { name: 'Hailey Adams', company: 'FlowRush', value: '$922', date: '10/06/2023', status: 'Completed' },
-];
+import React from 'react'
 
 export default function Table() {
+  const data = [
+    {
+      name: 'Elizabeth Lee',
+      avatar: '/icons/Avatar (1).png',
+      company: 'AvatarSystems',
+      value: '$359',
+      date: '10/07/2023',
+      status: 'New',
+      statusColor: 'bg-blue-100 text-blue-600'
+    },
+    {
+      name: 'Carlos Garcia',
+      avatar: '/icons/Avatar (2).png',
+      company: 'SmoozeShift',
+      value: '$747',
+      date: '24/07/2023',
+      status: 'New',
+      statusColor: 'bg-blue-100 text-blue-600'
+    },
+    {
+      name: 'Elizabeth Bailey',
+      avatar: '/icons/Avatar (3).png',
+      company: 'Prime Time Telecom',
+      value: '$564',
+      date: '08/08/2023',
+      status: 'In-progress',
+      statusColor: 'bg-yellow-100 text-yellow-600'
+    },
+    {
+      name: 'Ryan Brown',
+      avatar: '/icons/Avatar (4).png',
+      company: 'OmniTech Corporation',
+      value: '$541',
+      date: '31/08/2023',
+      status: 'In-progress',
+      statusColor: 'bg-yellow-100 text-yellow-600'
+    },
+    {
+      name: 'Ryan Young',
+      avatar: '/icons/Avatar (5).png',
+      company: 'DataStream Inc.',
+      value: '$769',
+      date: '01/05/2023',
+      status: 'Completed',
+      statusColor: 'bg-green-100 text-green-600'
+    },
+    {
+      name: 'Hailey Adams',
+      avatar: '/icons/Avatar 313.png',
+      company: 'FlowRush',
+      value: '$922',
+      date: '10/06/2023',
+      status: 'Completed',
+      statusColor: 'bg-green-100 text-green-600'
+    },
+  ];
+
   return (
-    <div className='p-6'>
-      <div className='flex justify-between mb-4'>
-        <h2 className='text-lg font-semibold'>Detailed report</h2>
-        <div className='space-x-2'>
-          <button className='px-4 py-2 border rounded text-pink-400'>Import</button>
-          <button className='px-4 py-2 border rounded text-pink-400'>Export</button>
+    <div className='p-4'>
+      <div className='overflow-x-auto rounded-lg shadow'>
+        <table className='w-full text-sm text-left text-gray-700'>
+          <thead className='bg-gray-100 text-gray-600 uppercase'>
+            <tr>
+              <th className='p-4'>
+                <input type='checkbox' />
+              </th>
+              <th className='p-4'>Customer Name</th>
+              <th className='p-4'>Company</th>
+              <th className='p-4'>Order Value</th>
+              <th className='p-4'>Order Date</th>
+              <th className='p-4'>Status</th>
+              <th className='p-4'></th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((item, idx) => (
+              <tr key={idx} className='border-b'>
+                <td className='p-4'>
+                  <input type='checkbox' />
+                </td>
+                <td className='p-4 flex items-center'>
+                  <img src={item.avatar} alt='avatar' className='w-8 h-8 rounded-full mr-3' />
+                  <span className='font-medium'>{item.name}</span>
+                </td>
+                <td className='p-4'>{item.company}</td>
+                <td className='p-4'>{item.value}</td>
+                <td className='p-4'>{item.date}</td>
+                <td className='p-4'>
+                  <span className={`px-3 py-1 rounded-full text-xs font-semibold ${item.statusColor}`}>
+                    {item.status}
+                  </span>
+                </td>
+<td className='p-4'>
+                  <img src='/icons/edit.png' alt='edit' className='w-4 h-4 cursor-pointer' />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Pagination */}
+      <div className='flex justify-between items-center mt-4 px-2 text-sm text-gray-500'>
+        <div>63 results</div>
+        <div className='flex items-center space-x-2'>
+          {[1, 2, 3, 4, 5, 10, 11].map((n) => (
+            <button
+              key={n}
+              className={`w-8 h-8 flex items-center justify-center rounded-full ${n === 1 ? 'bg-pink-500 text-white' : 'text-gray-600 hover:bg-gray-200'}`}
+            >
+              {n}
+            </button>
+          ))}
         </div>
       </div>
-      <table className='w-full table-auto border border-gray-200'>
-        <thead className='bg-gray-50'>
-          <tr>
-            <th className='p-3 border'>Customer Name</th>
-            <th className='p-3 border'>Company</th>
-            <th className='p-3 border'>Order Value</th>
-            <th className='p-3 border'>Order Date</th>
-            <th className='p-3 border'>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row, idx) => (
-            <tr key={idx} className='text-center'>
-              <td className='p-3 border'>{row.name}</td>
-              <td className='p-3 border'>{row.company}</td>
-              <td className='p-3 border'>{row.value}</td>
-              <td className='p-3 border'>{row.date}</td>
-              <td className='p-3 border'>
-                <span className={`px-3 py-1 rounded-full text-sm ${statusColors[row.status]}`}>
-                  {row.status}
-                </span>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
     </div>
   );
 }
