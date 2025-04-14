@@ -1,62 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useEffect } from 'react'
 
 export default function Table() {
-  const data = [
-    {
-      name: 'Elizabeth Lee',
-      avatar: '/icons/Avatar (1).png',
-      company: 'AvatarSystems',
-      value: '$359',
-      date: '10/07/2023',
-      status: 'New',
-      statusColor: 'bg-blue-100 text-blue-600'
-    },
-    {
-      name: 'Carlos Garcia',
-      avatar: '/icons/Avatar (2).png',
-      company: 'SmoozeShift',
-      value: '$747',
-      date: '24/07/2023',
-      status: 'New',
-      statusColor: 'bg-blue-100 text-blue-600'
-    },
-    {
-      name: 'Elizabeth Bailey',
-      avatar: '/icons/Avatar (3).png',
-      company: 'Prime Time Telecom',
-      value: '$564',
-      date: '08/08/2023',
-      status: 'In-progress',
-      statusColor: 'bg-yellow-100 text-yellow-600'
-    },
-    {
-      name: 'Ryan Brown',
-      avatar: '/icons/Avatar (4).png',
-      company: 'OmniTech Corporation',
-      value: '$541',
-      date: '31/08/2023',
-      status: 'In-progress',
-      statusColor: 'bg-yellow-100 text-yellow-600'
-    },
-    {
-      name: 'Ryan Young',
-      avatar: '/icons/Avatar (5).png',
-      company: 'DataStream Inc.',
-      value: '$769',
-      date: '01/05/2023',
-      status: 'Completed',
-      statusColor: 'bg-green-100 text-green-600'
-    },
-    {
-      name: 'Hailey Adams',
-      avatar: '/icons/Avatar 313.png',
-      company: 'FlowRush',
-      value: '$922',
-      date: '10/06/2023',
-      status: 'Completed',
-      statusColor: 'bg-green-100 text-green-600'
-    },
-  ];
+  const [data, setData] = useState([])
+  
+      const fetchData = (url, setDataResponse) =>{
+          fetch(url)
+              .then((response) => response.json())
+              .then((data) => {
+                  setDataResponse(data)
+              })
+      }
+  
+      useEffect(() => {
+          fetchData("https://67de7a15471aaaa7428491fc.mockapi.io/table", setData)
+      },data);
 
   return (
     <div className='p-4'>
