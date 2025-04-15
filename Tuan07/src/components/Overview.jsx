@@ -23,8 +23,13 @@ export default function Overview() {
     <div className='grid grid-cols-3 gap-6 p-6'>
       {data.map((item, idx) => (
         <div key={idx} className={`p-6 rounded-xl ${item.color}`}>
-          <div className='text-sm text-gray-600'>{item.title}</div>
-          <div className='text-2xl font-bold'>{item.value}</div>
+          <div className='flex'> 
+             <div>
+                   <div className='text-sm text-gray-600'>{item.title}</div>
+                    <div className='text-2xl font-bold'>{item.value}</div>
+              </div>
+              <img className='pl-70' src={item.img} alt="" />
+          </div>
           <div className='text-green-600 text-sm'>{item.change} period of change</div>
         </div>
       ))}

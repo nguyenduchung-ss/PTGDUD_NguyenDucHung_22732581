@@ -120,7 +120,22 @@ export default function Table() {
           </tbody>
         </table>
       </div>
-
+            {/* Pagination */}
+       <div className='flex justify-between items-center mt-4 px-2 text-sm text-gray-500'>
+         <div>63 results</div>
+         <div className='flex items-center space-x-2'>
+           {[1, 2, 3, 4, 5, 10, 11].map((n) => (
+             <button
+               key={n}
+               className={`w-8 h-8 flex items-center justify-center rounded-full ${n === 1 ? 'bg-pink-500 text-white' : 'text-gray-600 hover:bg-gray-200'}`}
+             >
+               {n}
+             </button>
+           ))}
+         </div>
+       </div>
+            
+            
       {isModalOpen && selectedItem && (
         <EditModal
           selectedItem={selectedItem}
@@ -130,6 +145,9 @@ export default function Table() {
           mode={modalMode}
         />
       )}
+
+      
     </div>
+    
   );
 }
