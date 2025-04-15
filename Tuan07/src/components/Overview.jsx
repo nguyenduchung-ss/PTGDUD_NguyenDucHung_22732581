@@ -18,7 +18,7 @@ export default function Overview() {
 
     useEffect(() => {
         fetchData("https://67de7a15471aaaa7428491fc.mockapi.io/Overview", setData)
-    },data);
+    },[]);
   return (
     <div className='grid grid-cols-3 gap-6 p-6'>
       {data.map((item, idx) => (
