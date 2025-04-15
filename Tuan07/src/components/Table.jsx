@@ -1,10 +1,13 @@
+// src/components/Table.jsx
 import React, { useState, useEffect } from "react";
-import { fetchUsers, updateUser } from "../api/userApi";
+import { fetchUsers, updateUser, addUser } from "../api/userApi";
+import EditModal from "./EditModal";
 
 export default function Table() {
   const [data, setData] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMode, setModalMode] = useState("edit"); // "edit" or "add"
   const [successMessage, setSuccessMessage] = useState("");
 
   const loadData = async () => {
@@ -18,6 +21,21 @@ export default function Table() {
 
   const handleEditClick = (item) => {
     setSelectedItem(item);
+    setModalMode("edit");
+    setIsModalOpen(true);
+  };
+
+  const handleAddClick = () => {
+    setSelectedItem({
+      name: "",
+      avatar: "/icons/Avatar (1).png",
+      company: "",
+      value: "",
+      date: new Date().toLocaleDateString("en-GB"),
+      status: "New",
+      statusColor: "bg-blue-100 text-blue-600"
+    });
+    setModalMode("add");
     setIsModalOpen(true);
   };
 
@@ -27,25 +45,34 @@ export default function Table() {
   };
 
   const handleSave = async () => {
-    if (!selectedItem?.id) {
-      alert("Không tìm thấy ID người dùng để cập nhật!");
-      return;
+    try {
+      if (modalMode === "edit") {
+        await updateUser(selectedItem.id, selectedItem);
+        setSuccessMessage("Cập nhật thành công!");
+      } else {
+        await addUser(selectedItem);
+        setSuccessMessage("Thêm người dùng thành công!");
+      }
+      setIsModalOpen(false);
+      await loadData();
+      setTimeout(() => setSuccessMessage(""), 3000);
+    } catch (error) {
+      alert("Có lỗi xảy ra: " + error.message);
     }
-  
-    console.log("Đang PUT user:", selectedItem); // ✅ debug ID
-    const updated = await updateUser(selectedItem.id, selectedItem);
-    setIsModalOpen(false);
-    setSuccessMessage("✅ Cập nhật thành công!");
-    await loadData(); // Cập nhật lại bảng
-    setTimeout(() => setSuccessMessage(""), 3000);
   };
-  
 
   return (
     <div className="p-4">
       {successMessage && (
         <div className="mb-4 text-green-600 font-medium">{successMessage}</div>
       )}
+
+      <button
+        className="mb-4 px-4 py-2 bg-green-500 text-white rounded"
+        onClick={handleAddClick}
+      >
+        + Thêm người dùng
+      </button>
 
       <div className="overflow-x-auto rounded-lg shadow">
         <table className="w-full text-sm text-left text-gray-700">
@@ -95,49 +122,13 @@ export default function Table() {
       </div>
 
       {isModalOpen && selectedItem && (
-        <div className="fixed top-[20%] left-1/2 transform -translate-x-1/2 z-50">
-          <div className="bg-white p-6 rounded-lg w-full max-w-md shadow-lg border border-gray-200">
-            <h2 className="text-lg font-semibold mb-4">Chỉnh sửa thông tin</h2>
-
-            <div className="space-y-3">
-              <div>
-                <label className="block text-sm font-medium">Tên khách hàng</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={selectedItem.name}
-                  onChange={handleChange}
-                  className="w-full border border-gray-300 rounded px-3 py-1 mt-1"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium">Công ty</label>
-                <input
-                  type="text"
-                  name="company"
-                  value={selectedItem.company}
-                  onChange={handleChange}
-                  className="w-full border border-gray-300 rounded px-3 py-1 mt-1"
-                />
-              </div>
-            </div>
-
-            <div className="flex justify-end space-x-2 mt-4">
-              <button
-                className="px-4 py-2 bg-gray-200 rounded"
-                onClick={() => setIsModalOpen(false)}
-              >
-                Đóng
-              </button>
-              <button
-                className="px-4 py-2 bg-blue-600 text-white rounded"
-                onClick={handleSave}
-              >
-                Lưu
-              </button>
-            </div>
-          </div>
-        </div>
+        <EditModal
+          selectedItem={selectedItem}
+          onClose={() => setIsModalOpen(false)}
+          onSave={handleSave}
+          onChange={handleChange}
+          mode={modalMode}
+        />
       )}
     </div>
   );
